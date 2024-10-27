@@ -3,11 +3,18 @@ pipeline {
 
     stages {
         stage('Build') {
+        agent {
+                        docker {
+                            image 'openjdk:17-oracle'
+                        }
+                    }
                     steps {
-                        // Use Gradle wrapper or Gradle directly
-                        sh './gradlew clean build' // If using Gradle wrapper
-                        // Or alternatively, without wrapper:
-                        // sh 'gradle clean build'
+                        sh '''
+                        ls -la
+                        java --version
+                        ./gradlew clean build'
+                        ls -la
+                        '''
                     }
                 }
     }
