@@ -12,7 +12,7 @@ pipeline {
                         sh '''
                         ls -la
                         java --version
-                        ./gradlew clean build
+                        gradle clean build
                         ls -la
                         '''
                     }
