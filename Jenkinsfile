@@ -15,6 +15,7 @@ pipeline {
                             steps {
                             sh '''
                                    echo "Test stages"
+                                   test -f build/libs/demo-0.0.1-SNAPSHOT.jar
                                                     '''
                           }
                         }
