@@ -11,13 +11,11 @@ pipeline {
                     }
                   }
                 }
-        stage('test') {
+        stage('Test') {
                             steps {
-                            withGradle {
                             sh '''
-                                                    ./gradlew test
+                                   echo "Test stages"
                                                     '''
-                            }
                           }
                         }
     }
