@@ -11,5 +11,14 @@ pipeline {
                     }
                   }
                 }
+        stage('test') {
+                            steps {
+                            withGradle {
+                            sh '''
+                                                    ./gradlew test
+                                                    '''
+                            }
+                          }
+                        }
     }
 }
