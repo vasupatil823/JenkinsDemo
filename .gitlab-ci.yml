@@ -2,23 +2,19 @@ image: gradle:7.5-jdk17
 stages:
   - build
   - test
-
-build:
+build_stage:
   stage: build
   script:
+    - echo "Building the project"
     - java -version
     - gradle --version
-    - echo "Building the project"
-    - ./gradlew build # For Gradle
-    # - mvn clean package # Uncomment if using Maven
-  only:
-    - main
-
-test:
+    - ./gradlew build
+  artifacts:
+    paths:
+      - ./build
+test_stage:
   stage: test
   script:
     - echo "Running tests"
-    - ./gradlew test # For Gradle
-    # - mvn test # Uncomment if using Maven
-  only:
-    - main
+    - test -e build/libs/demo-0.0.1-SNAPSHOT.jar || (echo "Artifact missing";)
+    - ./gradlew test
